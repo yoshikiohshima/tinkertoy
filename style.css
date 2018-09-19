@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i|Vollkorn:400,400i,700,700i');
+
+body {
+  font-family: 'Vollkorn', serif;
+  background-color: hsl(0, 0%, 100%);
+}
+
+h1, h2, h3, h4, h5,
+p.subtitle {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+h2, h3 {
+  font-style:  normal;
+  font-weight: 500;
+}
+
+pre.code {
+  font-family: Consolas, Monaco, Courier, monospace;
+}
+
+pre.primitive {
+  font-family: Consolas, Monaco, Courier, monospace;
+  font-size: 1.2rem;
+}
+
+div.caption {
+      margin-left: 0px;
+      overflow-y: scroll;
+      height: 220px;
+      width: 1024px;
+      outline: 1px solid;
+}
+
+p.caption {
+  width: 1000px;
+}
+
+p.highlight {
+  color: blue;
+}
+
+section>ul {
+  width: 50%;
+}
+
+section>ol {
+  width: 50%;
+}
+
+p.boxed {
+  border-radius: 2em;
+  border: solid gray 1px;
+  padding: 0.5em;
+}
+
+
+.sidenote, .marginnote {
+                      margin-bottom: 1.5rem;
+}
+
+
+.sidenote-number:after, .sidenote:before {
+    font-family: 'Vollkorn', serif;
+}
+
+@media (max-width: 760px) {
+   section>ul { width: 95%; }
+   section>ol { width: 95%; }
+}
