@@ -1,48 +1,45 @@
 @import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i|Vollkorn:400,400i,700,700i');
 
+html { font-size: 15px; }
+
 body {
   font-family: 'Vollkorn', serif;
   background-color: hsl(0, 0%, 100%);
 }
 
-h1, h2, h3, h4, h5,
-p.subtitle {
-  font-family: 'Fira Sans', sans-serif;
+div.article {
+  width: 70%;
+  margin-left: 10%;
 }
 
 h1 {
-  font-weight: 700;
-}
+     margin-top: 4rem;
+     margin-bottom: 1.5rem;
+     font-size: 3.2rem;
+     line-height: 1; }
 
-h2, h3 {
-  font-style:  normal;
-  font-weight: 500;
-}
+h2 {
+     font-weight: 400;
+     margin-top: 2.1rem;
+     margin-bottom: 0;
+     font-size: 1.8rem;
+     line-height: 1; }
 
-pre.code {
-  font-family: Consolas, Monaco, Courier, monospace;
-}
+h3 {
+     font-weight: 400;
+     font-size: 1.7rem;
+     margin-top: 2rem;
+     margin-bottom: 0;
+     line-height: 1; }
 
-pre.primitive {
-  font-family: Consolas, Monaco, Courier, monospace;
-  font-size: 1.2rem;
-}
+p, ol, ul { font-size: 1.4rem; }
 
-div.caption {
-      margin-left: 0px;
-      overflow-y: scroll;
-      height: 220px;
-      width: 1024px;
-      outline: 1px solid;
-}
+p { line-height: 2rem;
+    margin-top: 1.4rem;
+    margin-bottom: 1.4rem;
+    padding-right: 0;
+    vertical-align: baseline; }
 
-p.caption {
-  width: 1000px;
-}
-
-p.highlight {
-  color: blue;
-}
 
 section>ul {
   width: 50%;
@@ -58,6 +55,26 @@ p.boxed {
   padding: 0.5em;
 }
 
+img.right {
+  float: right;
+}
+
+img.border-bottom {
+  border-bottom: 2px solid black;
+  margin-bottom: 1rem;
+}
+
+img.middle {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.horizontal {
+  width: 120%;
+  display: flex;
+  justify-content: space-around;
+}
 
 .sidenote, .marginnote {
                       margin-bottom: 1.5rem;
