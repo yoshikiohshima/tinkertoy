@@ -8,8 +8,9 @@ body {
 }
 
 div.article {
-  width: 70%;
-  margin-left: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  max-width: 1000px;
 }
 
 h1 {
