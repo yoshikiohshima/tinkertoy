@@ -31,9 +31,9 @@ h3 {
      margin-bottom: 0;
      line-height: 1; }
 
-p, ol, ul { font-size: 1.4rem; }
+p, ol, ul { font-size: 1.1rem; }
 
-p { line-height: 2rem;
+p { line-height: 1.75rem; in en.css or ja.css
     margin-top: 1.4rem;
     margin-bottom: 1.4rem;
     padding-right: 0;
