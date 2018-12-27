@@ -1,6 +1,5 @@
-<link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet">
 body {
-  font-family: 'Source Serif Pro', serif;
+font-family: Georgia, 'Verdana', serif;
 }
 
 p, ol, ul { font-size: 1.1rem; }

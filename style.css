@@ -1,9 +1,15 @@
 html { font-size: 15px; }
 
+
 body {
-  font-family:Georgia,"Times New Roman","Hiragino Mincho","Meiryo",serif;
+//  font-family:Georgia,"Times New Roman","Hiragino Mincho","Meiryo",serif;
   background-color: hsl(0, 0%, 100%);
 }
+
+body {
+  font-family: 'Source Serif Pro', serif;
+}
+
 
 div.article {
   margin-left: 5%;
@@ -33,7 +39,7 @@ h3 {
 
 p, ol, ul { font-size: 1.1rem; }
 
-p { line-height: 1.75rem; in en.css or ja.css
+p { //line-height: 1.75rem; in en.css or ja.css
     margin-top: 1.4rem;
     margin-bottom: 1.4rem;
     padding-right: 0;
