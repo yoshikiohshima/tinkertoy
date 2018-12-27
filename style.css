@@ -89,7 +89,19 @@ img.middle {
     font-family: 'Vollkorn', serif;
 }
 
-@media (max-width: 760px) {
+.footnote {
+  width: 30%;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
+}
+
+.inlined-forever {
+  height: 1.1rem;
+  width: auto;
+}
+
+@mediaflush
+ (max-width: 760px) {
    section>ul { width: 95%; }
    section>ol { width: 95%; }
 }
