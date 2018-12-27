@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,500,500i,600,600i,700,700i|Vollkorn:400,400i,700,700i');
-
 html { font-size: 15px; }
 
 body {
-  font-family: 'Vollkorn', serif;
+  font-family:Georgia,"Times New Roman","Hiragino Mincho","Meiryo",serif;
   background-color: hsl(0, 0%, 100%);
 }
 
@@ -80,7 +78,6 @@ img.middle {
 .sidenote, .marginnote {
                       margin-bottom: 1.5rem;
 }
-
 
 .sidenote-number:after, .sidenote:before {
     font-family: 'Vollkorn', serif;
