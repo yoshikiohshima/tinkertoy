@@ -7,57 +7,22 @@
     <link rel="stylesheet" href="ja.css"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script type='text/javascript'>
-    let imageNames;
-    let images;
-
-    window.onresize = () => {
-	//adjust();
-    }
-
-    window.onload = () => {
-	//imageNames = Array.from(document.getElementsByTagName("img")).filter((elem) => elem.classList.contains("right"));
-	//images = imageNames.map((img) => {
-	//return {img: img, origPercent: parseFloat(img.style.width)}
-	//});
-	//adjust();
-    }
-
-    adjust = () => {
-        for (let i = 0; i < images.length - 1; i++) {
-	    let data = images[i];
-            let img = data.img;
-            let nextImg = images[i + 1].img;
-	    let bottom = nextImg.previousElementSibling;
-
-            if (img && bottom) {
-		let imgRect = img.getBoundingClientRect();
-		let origWidth = window.innerWidth * (data.origPercent / 100);
-		let origScale = origWidth / img.naturalWidth
-		let imgOrigHeight = img.naturalHeight * origScale;
-		let imgOrigBottom = img.offsetTop + imgOrigHeight;
-
-		let bottomRect = bottom.getBoundingClientRect();
-		let bottomBottom = bottom.offsetTop + bottomRect.height;
-
-		if (imgOrigBottom > bottomBottom) {
-		    let excess = imgOrigBottom - bottomBottom + 10;
-		    let ratio = (imgOrigHeight - excess) / imgOrigHeight;
-		    let newPercent = data.origPercent * ratio;
-		    img.style.width = newPercent.toFixed(2) + "%";
-		} else {
-		    img.style.width = data.origPercent + "%";
-		}
-            }
-        }
-    }
-    </script>
+    <script type='text/javascript' src="layout.js"></script>
 
   </head>
   <body>
     <div class='article'>
+      
 
       <table style="text-align: center; margin-bottom: 50px">
+	<tr>
+          <td></td>
+	  <td style="text-align: right">
+	    <div class="lang-selector">
+              <a target="_self" href="index.html">English</a> | 日本語
+	    </div>
+          </td>
+        </tr>
         <tr>
           <td style="width: 70%"><img style='width: 100%; height: auto' src="0-title.png"/></td>
           <td style="width: 28%"><img style='width: 100%; height: auto' src="Marvin Oval Drawing.png"/></td>
