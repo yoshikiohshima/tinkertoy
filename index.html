@@ -224,14 +224,8 @@ Thoughts like these were exciting us in the mid-80s right after Marvin wrote his
 	</p>
 
 	<p>
-How animals behave and think is also the lead-in to Jerome Bruner's wonderful “Man, A Course Of Study” (MACOS) curriculum to help 5th graders learn an intellectually honest version of anthropology. (What makes us human? How did we get that way? How can we become more so?). MACOS was already being taught in the school in Los Angeles we were invited to work in (3). Our joint project with the school was called “The Vivarium”, and Marvin became one of its advisors.
+How animals behave and think is also the lead-in to Jerome Bruner's wonderful “Man, A Course Of Study” (MACOS) curriculum to help 5th graders learn an intellectually honest version of anthropology. (What makes us human? How did we get that way? How can we become more so?). MACOS was already being taught in the school in Los Angeles we were invited to work in <a href="#footnote1">(1)</a>. Our joint project with the school was called “The Vivarium”, and Marvin became one of its advisors.
 	</p>
-
-<footnote>
-<div class="footnote">
-(3) The Los Angeles Unified School District busing school "The Open Magnet School", Roberta Blatt, Principal. The Vivarium was a joint project with Apple Computer and the MIT Media Lab. 
-</div>
-</footnote>
 
 	<p>
 Nervous systems are made from special cells called neurons. Some can sense and signal they've detected something, some can cause muscles to act, and some intermediate between senses and actions. Most animals have “avoid” behaviors when they touch barriers or smell noxious chemicals (and so do we). And most animals will “explore” when there is nothing more pressing to do (and so will we).
@@ -246,7 +240,6 @@ The beautiful, much studied sea snail nudibranch, with a simple nervous system o
 
 <img class="middle" style='width: 90%' src="13-sensor-motor.png" id="13-sensor-motor.png"/>
 
-
 	<p>
 There are “sensor neurons” S connected to the nudibranch's touch sensitive cells that can send signals to “motor neurons” M that will cause the nudibranch to behave.
 	</p>
@@ -256,7 +249,6 @@ There might also be connections to inhibit what is already going on—such as �
 	</p>
 
 <img class="right" style='width: 50%' src="14-arm-pin.png" id="14-arm-pin.png"/>
-
 
 	<p>
 We humans also have many sensory nerves to motor nerves connections that are just this simple and—just like the nudibranch—that run from a pain sensor in our skin and directly back out to the muscles in our arm to produce a quick response.
@@ -320,6 +312,12 @@ Finally, let's add a little script so we can also have a mouse click (a gentle �
 One fun thing we wound up doing while debugging this example, was to play musical tones in each of the scripts. This slowed everything down (the tones were set to play for 1 second), and the melody we heard was the actual sequence of actions (Marvin would have loved this!) Here is the actual motor neuron script.
 	</p>
 
+<footnote>
+<div class="footnote">
+<span id="footnote1">(1) The Los Angeles Unified School District busing school "The Open Magnet School", Roberta Blatt, Principal. The Vivarium was a joint project with Apple Computer and the MIT Media Lab. <a href="" onclick="backFromFootnote()" class="footnote">↑</a></span>
+</div>
+</footnote>
+
 <h2>How Do Animals Learn?</h2>
 
 	<p>
@@ -352,14 +350,8 @@ our nudibranch—like Grey Walter's tortoise—to learn that a sound means “bu
 
 <img class="right" style='width: 20%' src="24-bulb-coincidence.png" id="24-bulb-coincidence.png"/>
 	<p>
-The association comparisons and the learning and memory of them take place in the “bulb” of the sensory neuron that attaches to the motor neuron. It is this that “notices”, and changes to strengthen the synapse when there is activity in the side connection.
+The association comparisons and the learning and memory of them take place in the “bulb” of the sensory neuron that attaches to the motor neuron. It is this that “notices”, and changes to strengthen the synapse when there is activity in the side connection. <a href="#footnote2">(2)</a>
 	</p>
-
-<footnote>
-<div class="footnote">
-The state of understanding of how this works in single neurons is now at the detailed molecular level, and is quite wonderful to go through (especially compared to what was known 60 years ago when I was a biology and math major).
-</div>
-</footnote>
 
 	<p>
 We can make some sketches to help us think about how this might work inside the bulb, and we'll use Grey Walter's approach to get started.
@@ -378,14 +370,8 @@ I like to think via making pictures of behavior over time. For remembering sound
 <img class="right" style='width: 20%' src="26-ss-sound-memory.png" id="26-ss-sound-memory.png"/>
 
 	<p>
-Then I like to scrawl the gist of the main process in a script to the left of the sketch (here I'll put it under the sketch). We want to wake up when there is a sound-event, and set the sound memory to its max (100 is our arbitrary choice for this). We want the sound memory to automatically die away to give the behavior shown in the time picture (we'll have the sound memory do this for us).
+Then I like to scrawl the gist of the main process in a script to the left of the sketch (here I'll put it under the sketch). We want to wake up <a href="#footnote3">(3)</a> when there is a sound-event, and set the sound memory to its max (100 is our arbitrary choice for this). We want the sound memory to automatically die away to give the behavior shown in the time picture (we'll have the sound memory do this for us).
 	</p>
-
-<footnote>
-<div class="footnote">
-In my “scrawlscripts” I like to use <img class="inlined-forever" src="forever.png"/> to mean "always running/active".
-</div>
-</footnote>
 
 <div class='column'>
 <img class="right" style='width: 20%' src="27-ss-coincidence-memory.png" id="27-ss-coincidence-memory.png"/>
@@ -431,6 +417,15 @@ The two big insights here are (a) this is very straightforward if we have the me
 	<p class="boxed"  style='width: 80%'>
 A sketch like this is a map of our intentions and a way to help us remember in the large what we are trying to do. Working in the rough—as with TinkerToys and sketching— helps us to find workable visions of what we are trying to make. We often can't define from the top-down, but we can explore the unknown territory to find the possibilities.
 	</p>
+
+<footnote>
+<div class="footnote">
+<span id="footnote2"> (2) The state of understanding of how this works in single neurons is now at the detailed molecular level, and is quite wonderful to go through (especially compared to what was known 60 years ago when I was a biology and math major). <a href="" onclick="backFromFootnote()" class="footnote">↑</a></span><br>
+<span id="footnote3"> (3) In my “scrawlscripts” I like to use <img class="inlined-forever" src="forever.png"/> to mean "always running/active". <a href="" onclick="backFromFootnote()" class="footnote">↑</a></span>
+</div>
+</footnote>
+
+
 
 <h2>Memories Are Made Of These</h2>
 
@@ -503,12 +498,12 @@ An instance of our memory part will now look like the sketch in the map:
 	</p>
 
 	<p class="boxed" style='width: 60%'>
-One of the most powerful abilities of computers is to be able to treat any organization of its stuff as a whole new “part” and to make instances of them in unlimited number. For example, all the letters I'm using to write with are instances of “letter parts” and all the “a”s in the Garamond font that I'm using are instances of both the idea of “a” and a particular visual form for “a” (6).
+One of the most powerful abilities of computers is to be able to treat any organization of its stuff as a whole new “part” and to make instances of them in unlimited number. For example, all the letters I'm using to write with are instances of “letter parts” and all the “a”s in the Garamond font that I'm using are instances of both the idea of “a” and a particular visual form for “a” <a href="#footnote4">(4)</a>.
 	</p>
 
 <footnote>
 <div class="footnote">
-(6) A wonderful connection here is that Sketchpad, the first real interactive graphics system, created by Ivan Sutherland in  1962, could make new parts from combinations of parts. Marvin was one of Ivan’s thesis advisors! (see the later paragraph on <a href="#sketchpad">Sketchpad</a>).
+<span id="footnote4"> (4) A wonderful connection here is that Sketchpad, the first real interactive graphics system, created by Ivan Sutherland in  1962, could make new parts from combinations of parts. Marvin was one of Ivan’s thesis advisors! (see the later paragraph on <a href="#sketchpad">Sketchpad</a>).<a href="" onclick="backFromFootnote()" class="footnote">↑</a></span>
 </div>
 </footnote>
 
@@ -538,23 +533,15 @@ The last script is very simple, but also profound. It says that if it has been d
 	<p>
 We can see that associated learning can be made from just a few simple mechanisms organized to notice, judge, learn, and remember. Marvin wanted to show “how minds
 are built of mindless stuff, from parts that are much smaller and simpler than anything
-we'd consider smart”, and we've just made a children's example that does just this for a very simple mind. We didn't need an electronic digital computer to do this (we could have done this completely mechanically with basins or balloons and parts like TinkerToys). Or we could have used the machine that Marvin built for part of his Math PhD thesis at Princeton in 1954—the wonderfully named “SNARC” (7)—that was one of the very first “neural net” machines with 40 “neurons”, each one using the very same ideas that we've just built. It didn't use TinkerToys, toilet tanks, or computers, but was made from simple electrical and mechanical materials of that time.
+we'd consider smart”, and we've just made a children's example that does just this for a very simple mind. We didn't need an electronic digital computer to do this (we could have done this completely mechanically with basins or balloons and parts like TinkerToys). Or we could have used the machine that Marvin built for part of his Math PhD thesis at Princeton in 1954 &mdash; the wonderfully named “SNARC” <a href="#footnote5">(5)</a> &mdash; that was one of the very first “neural net” machines with 40 “neurons”, each one using the very same ideas that we've just built. It didn't use TinkerToys, toilet tanks, or computers, but was made from simple electrical and mechanical materials of that time.
 	</p>
-
-<footntoe>
-<div class="footnote">
-(7) SNARC: Stochastic Neural Analog Reinforcement Calculator – there is a terrific <a href="https://youtu.be/Zo68UjlWj8Y">YouTube clip</a> of Marvin explaining this <br>
-(8) See  Daniel Kahneman “Thinking: Fast and Slow” for a larger view of how fast non-cognitive  "thinking" happens at human levels. 
-</div>
-</footnote>
-
 
 	<p class="boxed">
 The flip-side of tinkering is that deep invention and discovery has proved to be quite difficult even for geniuses, and so learning what great minds have done in the past has been one of the most powerful ideas for making progress in ideas and art. Picasso's resolution of the seeming conflict between knowledge and creativity was: “Learn the rules like a pro, so you can break them like an artist!”. Here, we were greatly aided and inspired by how Grey Walter approached the problem of making a conditioned reflex in the 1940s from a few vacuum tubes. The use of skilled knowledge is not antithetical to creativity if treated as “materials and tools” rather than “dogma”. Children need to discover, and they also need help to discover. Their learning environments must foster both.
 	</p>
 
 	<p>
-The most human of human thinking is much more complex than associative learning. But a lot of our brain - minds are made from these older simpler reflex reactions and associations based on repeated coincidences8. Some of the tragedies of Post Traumatic Stress Disorder are almost identical associations between loud sounds and reactions to danger. It's hard to shake because it is not based on conscious high-level thinking. This makes de-conditioning even more difficult than the initial associations.
+The most human of human thinking is much more complex than associative learning. But a lot of our brain - minds are made from these older simpler reflex reactions and associations based on repeated coincidences <a href="#footnote6">(6)</a>. Some of the tragedies of Post Traumatic Stress Disorder are almost identical associations between loud sounds and reactions to danger. It's hard to shake because it is not based on conscious high-level thinking. This makes de-conditioning even more difficult than the initial associations.
 	</p>
 
 	<p>
@@ -564,6 +551,13 @@ Despite the higher level thinking we've learned how to do, it's startling that s
 	<p>
 Can we learn to not reflexively make the substitutions when it's dangerous to do so?
 	</p>
+
+<footntoe>
+<div class="footnote">
+<span id="footnote5"> (5) SNARC: Stochastic Neural Analog Reinforcement Calculator – there is a terrific <a href="https://youtu.be/Zo68UjlWj8Y">YouTube clip</a> of Marvin explaining this <a href="" onclick="backFromFootnote()" class="footnote">↑</a></span><br>
+<span id="footnote6"> (6) See  Daniel Kahneman “Thinking: Fast and Slow” for a larger view of how fast non-cognitive  "thinking" happens at human levels. <a href="" onclick="backFromFootnote()" class="footnote">↑</a></span>
+</div>
+</footnote>
 
 <h2>The Ultimate TinkerToy is the Ultimate ThinkerToy</h2>
 
@@ -577,27 +571,20 @@ In doing this we are following in a long tradition that Marvin had a part in, wh
 
 <img class="middle" style='width: 80%' src="42-sketchpad.png" id="42-sketchpad.png"/>
 
-
 	<p>
 We can see today's personal computing here! Just as the rough sketch of a bridge was easily transformed by Sketchpad 55 years ago into a dynamic simulation of the bridge that calculated the stresses and strains as well as showed its appearance, today we can have children drawing diagrams of animal neural structures, making them work, and trying them out in simulated animals. Sketchpad was done on a supercomputer the size of a football field. Today's children have vastly more computer power at their disposal on their personal laptops costing just a few hundred dollars, and are the size of just the Sketchpad display (the football-field-sized computer is now on the back of the display, and much faster!).
 	</p>
 
-<img class="right" style='width: 60%' src="43-SC.png" id="43-SC.png"/>
+<img class="right" style='width: 30%' src="43-SC.png" id="43-SC.png"/>
+
 	<p>
-Marvin also had a part in how laptops and children's computers came about. When I was in grad school at the University of Utah in 1968, Marvin gave an exciting talk at a nearby educational computer conference, and much of it (9) was about Seymour Papert and his ideas about helping children learn powerful ideas.
+Marvin also had a part in how laptops and children's computers came about. When I was in grad school at the University of Utah in 1968, Marvin gave an exciting talk at a nearby educational computer conference, and much of it <a href="#footnote7">(7)</a> was about Seymour Papert and his ideas about helping children learn powerful ideas.
 	</p>
 
-<footnote>
-<div class="footnote">
-(9) Quite a bit of the substance of this talk was later written up by Marvin as his Turing Award Lecture [1970]
-</div>
-</footnote>
-
-<img class="right" style='width: 30%' src="44-logo-teach.png" id="44-logo-teach.png"/>
+<img class="right" style='width: 25%' src="44-logo-teach.png" id="44-logo-teach.png"/>
 	<p>
 Later that year I visited Seymour's and Cynthia Solomon's Logo classroom outside of Boston, and what they were doing blew my mind—and still to this day!
 	</p>
-
 
 	<p>
  On the plane back to Utah, I made this sketch of “a personal computer for children of all ages”: a “dynamic medium for creative thought” inspired by Sketchpad, Logo and other ideas from our research community. This was part of what grew into the personal computers, laptops, and tablets we now use.
@@ -621,6 +608,12 @@ In other words, the computer is an instrument whose music is ideas. Its great im
 	<p>
 What do you think children should be doing with their computers?
 	</p>
+
+<footnote>
+<div class="footnote">
+<span id="footnote7">(7) Quite a bit of the substance of this talk was later written up by Marvin as his Turing Award Lecture [1970] <a href="" onclick="backFromFootnote()" class="footnote">↑</a></span>
+</div>
+</footnote>
 
 <h2>Acknowledgements</h2>
 

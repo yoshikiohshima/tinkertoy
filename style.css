@@ -90,7 +90,8 @@ img.middle {
 }
 
 .footnote {
-  width: 30%;
+  width: 50%;
+  margin-left: auto;
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
 }
