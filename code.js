@@ -17,7 +17,33 @@ window.onload = () => {
     //return {img: img, origPercent: parseFloat(img.style.width)}
     //});
     //adjust();
+    addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp");
+    addGP("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp");
 }
+
+function addGP(after, projectName) {
+    let prev = window.document.getElementById(after);
+    let parent = prev.parentNode;
+    let loc = window.location;
+    let last = loc.pathname.lastIndexOf("/");
+    let dir = loc.pathname.slice(0, last+1);
+
+    let hostPart;
+    if (loc.protocol !== "https:" || loc.protocol !== "http:") {
+	hostPart = "tinlizzie.org/~ohshima/";
+    } else {
+	hostPart = loc.protocol + "//" + loc.hostname + dir;
+    }
+
+    let src = hostPart + projectName;
+
+    let iframe = window.document.createElement("iframe");
+    iframe.src = "https://gpblocks.org/run/go.html#" + src;
+    iframe.style.height = "800px";
+    iframe.style.width = "100%";
+    parent.insertBefore(iframe, prev);
+}
+
 
 adjust = () => {
     for (let i = 0; i < images.length - 1; i++) {
