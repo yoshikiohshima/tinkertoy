@@ -18,11 +18,31 @@ window.onscroll = evt => {
 };
 
 window.onload = () => {
-    addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp");
+    addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", "800px", "600px");
     addGP("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp");
 };
 
-function addGP(after, projectName) {
+function addGPLauncher(after, projectName, width, height) {
+    let prev = window.document.getElementById(after);
+    let parent = prev.parentNode;
+
+    let img = document.createElement("img");
+    img.src = "round_blue_play_button_down.svg";
+    img.alt = "Launch GP";
+
+    let div = document.createElement("div");
+    div.classList.add("cover");
+    div.appendChild(img);
+
+    parent.insertBefore(div, prev);
+
+    img.onclick = evt => {
+        div.parentNode.removeChild(div);
+        addGP(after, projectName, width, height);
+    };
+}
+
+function addGP(after, projectName, width, height) {
     let prev = window.document.getElementById(after);
     let parent = prev.parentNode;
     let loc = window.location;
@@ -41,9 +61,9 @@ function addGP(after, projectName) {
     let iframe = window.document.createElement("iframe");
     iframe.id = projectName;
     iframe.src = "https://gpblocks.org/run/go.html#" + src;
-    iframe.setAttribute("allowFullScreen", "true");
-    iframe.style.height = "800px";
-    iframe.style.width = "100%";
+    iframe.setAttribute("allow", "autoplay; fullscreen");
+    iframe.style.height = height;
+    iframe.style.width = width;
     parent.insertBefore(iframe, prev);
     //iframe.contentWindow.postMessage("suspend GP");
     gps.push({iframe, running: true});
