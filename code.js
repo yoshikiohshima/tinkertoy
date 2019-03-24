@@ -18,8 +18,8 @@ window.onscroll = evt => {
 };
 
 window.onload = () => {
-    addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", "800px", "600px");
-    addGP("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp");
+    addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
+    addGP("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
 };
 
 function addGPLauncher(after, projectName, width, height) {
@@ -65,7 +65,6 @@ function addGP(after, projectName, width, height) {
     iframe.style.height = height;
     iframe.style.width = width;
     parent.insertBefore(iframe, prev);
-    //iframe.contentWindow.postMessage("suspend GP");
     gps.push({iframe, running: true});
 }
 
