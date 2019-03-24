@@ -1,25 +1,26 @@
-let imageNames;
-let images;
+let gps = []; //[{iframe: iframe, running: bool}]
 
-function backFromFootnote() {
-    if (window.location.hash.length > 0) {
-	window.history.back();
+window.onscroll = evt => {
+    let docViewTop = window.scrollY;
+    let docViewBottom = docViewTop + window.innerHeight;
+
+    for (let i = 0; i < gps.length; i++) {
+        let elemTop = gps[i].iframe.offsetTop;
+        let elemBottom = elemTop + gps[i].iframe.offsetHeight;
+        let visible = elemTop < docViewBottom && docViewTop < elemBottom;
+        if (gps[i].running !== visible) {
+            console.log(gps[i].iframe.id, "switch to: ", visible);
+            let message = visible ? "resume GP" : "suspend GP";
+            gps[i].running = visible;
+            gps[i].iframe.contentWindow.postMessage(message, '*');
+        }
     }
-}
-
-window.onresize = () => {
-    //adjust();
-}
+};
 
 window.onload = () => {
-    //imageNames = Array.from(document.getElementsByTagName("img")).filter((elem) => elem.classList.contains("right"));
-    //images = imageNames.map((img) => {
-    //return {img: img, origPercent: parseFloat(img.style.width)}
-    //});
-    //adjust();
     addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp");
     addGP("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp");
-}
+};
 
 function addGP(after, projectName) {
     let prev = window.document.getElementById(after);
@@ -38,38 +39,18 @@ function addGP(after, projectName) {
     let src = hostPart + projectName;
 
     let iframe = window.document.createElement("iframe");
+    iframe.id = projectName;
     iframe.src = "https://gpblocks.org/run/go.html#" + src;
+    iframe.setAttribute("allowFullScreen", "true");
     iframe.style.height = "800px";
     iframe.style.width = "100%";
     parent.insertBefore(iframe, prev);
+    //iframe.contentWindow.postMessage("suspend GP");
+    gps.push({iframe, running: true});
 }
 
-
-adjust = () => {
-    for (let i = 0; i < images.length - 1; i++) {
-	let data = images[i];
-        let img = data.img;
-        let nextImg = images[i + 1].img;
-	let bottom = nextImg.previousElementSibling;
-
-        if (img && bottom) {
-	    let imgRect = img.getBoundingClientRect();
-	    let origWidth = window.innerWidth * (data.origPercent / 100);
-	    let origScale = origWidth / img.naturalWidth
-	    let imgOrigHeight = img.naturalHeight * origScale;
-	    let imgOrigBottom = img.offsetTop + imgOrigHeight;
-
-	    let bottomRect = bottom.getBoundingClientRect();
-	    let bottomBottom = bottom.offsetTop + bottomRect.height;
-
-	    if (imgOrigBottom > bottomBottom) {
-		let excess = imgOrigBottom - bottomBottom + 10;
-		let ratio = (imgOrigHeight - excess) / imgOrigHeight;
-		let newPercent = data.origPercent * ratio;
-		img.style.width = newPercent.toFixed(2) + "%";
-	    } else {
-		img.style.width = data.origPercent + "%";
-	    }
-        }
+function backFromFootnote() {
+    if (window.location.hash.length > 0) {
+	window.history.back();
     }
 }
