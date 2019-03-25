@@ -76,7 +76,7 @@ function makeGP(after, projectName, width, height) {
     if (loc.protocol !== "https:" && loc.protocol !== "http:") {
 	hostPart = "tinlizzie.org/~ohshima/";
     } else {
-	hostPart = loc.protocol + "//" + loc.hostname + dir;
+	hostPart = loc.hostname + dir;
     }
 
     let src = hostPart + projectName;
