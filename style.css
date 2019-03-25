@@ -101,6 +101,34 @@ img.middle {
   width: auto;
 }
 
+#loaderholder {
+  height: 60px;
+  text-align: right;
+}
+
+#loaderLabel {
+  width: 760px;
+  text-align: right;
+}
+
+.gp {
+  width: 720px;
+  height: 5400px;
+}
+
+.gp.loading {
+  transform: scale(0.1, 0.1);
+  transform-origin: top left;
+  width: 40px;
+  height: 30px;
+}
+
+div.loading {
+  position: absolute;
+  width: 80px;
+  height: 60px;
+}
+
 @mediaflush
  (max-width: 760px) {
    section>ul { width: 95%; }
