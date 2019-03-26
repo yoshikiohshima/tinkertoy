@@ -84,7 +84,7 @@ function makeGP(after, projectName, width, height) {
     let iframe = window.document.createElement("iframe");
     iframe.id = projectName;
     iframe.classList.add("gp");
-    iframe.src = "https://gpblocks.org/run/go.html#" + src;
+    iframe.src = "https://gpblocks.org/run/load.html#" + src;
     iframe.setAttribute("allow", "autoplay; fullscreen");
     iframe.style.height = height;
     iframe.style.width = width;
@@ -103,7 +103,7 @@ function makeGP(after, projectName, width, height) {
     div.style.left = left + "px";
 
     gps[projectName] = {
-        iframe, div, running: true, loading: () => {
+        iframe, div, running: false, loading: () => {
             iframe.classList.remove("loading");
             div.classList.remove("loading");
             moveGP(projectName);}
