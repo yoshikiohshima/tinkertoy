@@ -37,7 +37,7 @@ window.onscroll = evt => {
 window.onload = () => {
     holder = document.getElementById("loaderholder");
 
-    if (detectMobile) {
+    if (detectMobile()) {
         addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
         addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
     } else {
