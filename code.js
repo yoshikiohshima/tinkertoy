@@ -1,9 +1,21 @@
 let gps = {}; //{id: {iframe: iframe, div: div, running: bool, loading: bool}}
 
 let holder; // DOM
-let stillLoading = false;
+let startLoadingTime = null;
+let stillLoading = null;
 let loaderDots = ['.', '..', '...', '....'];
 let loaderIndex = 0;
+
+
+function detectMobile() {
+    return (navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        || navigator.userAgent.match(/Windows Phone/i));
+};
 
 window.onscroll = evt => {
     let docViewTop = window.scrollY;
@@ -25,9 +37,16 @@ window.onscroll = evt => {
 window.onload = () => {
     holder = document.getElementById("loaderholder");
 
-    addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
-    addGP("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
+    if (detectMobile) {
+        addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
+        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
+    } else {
+        addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
+        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
+    }
+
     stillLoading = true;
+    startLoadingTime = Date.now();
     loaderAnimation();
 };
 
@@ -49,22 +68,24 @@ window.onmessage = (msg) => {
     }
 };
 
-function addGP(after, projectName, width, height, optDOM) {
+function addGP(after, projectName, width, height, optReplacementopt) {
     let prev = window.document.getElementById(after);
     let parent = prev.parentNode;
-    let div = optDOM || makeGP(after, projectName, width, height);
+    let div = makeGP(after, projectName, width, height);
+
+    if (optReplacementopt) {
+        parent.removeChild(optReplacementopt);
+    }
     parent.insertBefore(div, prev);
     return div;
 }
 
-function moveGP(projectName) {
-    let gp = gps[projectName];
-    if (gp) {
-        gp.div.classList.remove("loading");
-        gp.div.style.removeProperty("top");
-        gp.div.style.removeProperty("right");
-        gp.iframe.classList.remove("loading");
-    }
+function addGPLauncher(after, projectName, width, height) {
+    let prev = window.document.getElementById(after);
+    let parent = prev.parentNode;
+    let div = makeGPLauncher(after, projectName, width, height);
+    parent.insertBefore(div, prev);
+    return div;
 }
 
 function makeGP(after, projectName, width, height) {
@@ -92,27 +113,52 @@ function makeGP(after, projectName, width, height) {
     let div = document.createElement("div");
     div.appendChild(iframe);
 
-    iframe.classList.add("loading");
-    div.classList.add("loading");
-
-    let top = holder.offsetTop;
-    let right = holder.offsetLeft + holder.offsetWidth;
-    let left = right - (Object.keys(gps).length * 80 + 30);
-
-    div.style.top = (top + 20) + "px";
-    div.style.left = left + "px";
-
-    gps[projectName] = {
-        iframe, div, running: false, loading: () => {
-            iframe.classList.remove("loading");
-            div.classList.remove("loading");
-            moveGP(projectName);}
-    };
     return div;
 }
 
+function makeGPLauncher(after, projectName, width, height) {
+    let launcher = document.createElement("div");
+
+    launcher.style.width = width;
+    launcher.style.height = height;
+    launcher.classList.add("launcher");
+
+    //let button = document.createElement("img");
+    //button.src = "round_blue_play_button_down.svg";
+
+    //button.classList.add("launcherButton");
+
+    launcher.style.setProperty("background-image", `url(${projectName + "-background.png"})`);
+    //let buttonHolder = document.createElement("div");
+    //buttonHolder.style.height = "220px";
+    //buttonHolder.style.width = "220px";
+
+    launcher.style.setProperty("background", `linear-gradient(rgba(0,0,0,0.5), rgba(0, 0, 0, 0.5) ),url(${projectName + "-background.png"}) no-repeat`);
+    launcher.style.setProperty("background-size", "100%");
+
+    let msg = document.createElement("div");
+    msg.innerHTML = `
+Tap here to start the dynamic content.<BR>
+It may take up to a minute to launch.`;
+
+    msg.classList.add("launcherMessage");
+
+    //buttonHolder.appendChild(button);
+    //launcher.appendChild(buttonHolder);
+
+    launcher.appendChild(msg);
+
+    launcher.onclick =() => {
+        addGP(after, projectName, width, height, launcher);
+        console.log("click", projectName);
+    };
+
+    return launcher;
+}
+
 function loaderAnimation() {
-    if (stillLoading) {
+    let now = Date.now();
+    if (stillLoading && now < startLoadingTime + 3000) {
         if (holder) {
             let label = holder.querySelector('#loaderLabel');
             let labelDots = holder.querySelector('#loaderDots');
@@ -133,3 +179,36 @@ function backFromFootnote() {
 	window.history.back();
     }
 }
+
+/*
+function thumbnailGP(div, iframe, projectName) {
+    let top = holder.offsetTop;
+    let right = holder.offsetLeft + holder.offsetWidth;
+    let left = right - (Object.keys(gps).length * 80 + 30);
+
+    div.style.top = (top + 20) + "px";
+    div.style.left = left + "px";
+
+    iframe.classList.add("loading");
+    div.classList.add("loading");
+
+    gps[projectName] = {
+        iframe, div, running: true, loading: null};
+
+    (() => {
+            iframe.classList.remove("loading");
+            div.classList.remove("loading");
+            moveGP(projectName);})();
+    return div;
+}
+
+function moveGP(projectName) {
+    let gp = gps[projectName];
+    if (gp) {
+        gp.div.classList.remove("loading");
+        gp.div.style.removeProperty("top");
+        gp.div.style.removeProperty("right");
+        gp.iframe.classList.remove("loading");
+    }
+}
+*/

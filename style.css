@@ -129,6 +129,35 @@ div.loading {
   height: 60px;
 }
 
+div.launcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 1px;
+  border-style: solid;
+  text-align: center;
+}
+
+.launcherButton {
+  transform: scale(0.2, 0.2);
+  transform-origin: left top;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+
+.launcherMessage {
+  color: white;
+  font-family: 'Comic';
+  font-size: 20pt;
+  font-weight: bold;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: black;
+  display: inline-block;
+}
+
 @mediaflush
  (max-width: 760px) {
    section>ul { width: 95%; }
