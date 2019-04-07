@@ -17,32 +17,35 @@ function detectMobile() {
         || navigator.userAgent.match(/Windows Phone/i));
 };
 
-window.onscroll = evt => {
-    let docViewTop = window.scrollY;
-    let docViewBottom = docViewTop + window.innerHeight;
+// window.onscroll = evt => {
+//     let docViewTop = window.scrollY;
+//     let docViewBottom = docViewTop + window.innerHeight;
 
-    Object.entries(gps).forEach(([key, gp]) => {
-        let elemTop = gp.iframe.offsetTop;
-        let elemBottom = elemTop + gp.iframe.offsetHeight;
-        let visible = elemTop < docViewBottom && docViewTop < elemBottom;
-        if (gp.running !== visible) {
-            console.log(gp.iframe.id, "switch to: ", visible);
-            let message = visible ? "resume GP" : "suspend GP";
-            gp.running = visible;
-            gp.iframe.contentWindow.postMessage(message, '*');
-        }
-    });
-};
+//     Object.entries(gps).forEach(([key, gp]) => {
+//         let elemTop = gp.iframe.offsetTop;
+//         let elemBottom = elemTop + gp.iframe.offsetHeight;
+//         let visible = elemTop < docViewBottom && docViewTop < elemBottom;
+//         if (gp.running !== visible) {
+//             console.log(gp.iframe.id, "switch to: ", visible);
+//             let message = visible ? "resume GP" : "suspend GP";
+//             gp.running = visible;
+//             gp.iframe.contentWindow.postMessage(message, '*');
+//         }
+//     });
+// };
 
 window.onload = () => {
     holder = document.getElementById("loaderholder");
 
+    let w = "720px";
+    let h = "540px"; // 405px
+
     if (detectMobile()) {
-        addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
-        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
+        addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp", w, h);
+        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", w, h);
     } else {
-        addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", "720px", "540px");
-        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", "720px", "540px");
+        addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", w, h);
+        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", w, h);
     }
 
     stillLoading = true;
@@ -56,7 +59,7 @@ window.onmessage = (msg) => {
     let origin = msg.origin;
     let source = msg.source;
 
-    console.log(data, origin, source, name);
+    console.log('message received', data, origin, source, name);
     if (gps[name] && gps[name].loading) {
         gps[name].loading();
         gps[name].loading = null;
@@ -76,7 +79,12 @@ function addGP(after, projectName, width, height, optReplacementopt) {
     if (optReplacementopt) {
         parent.removeChild(optReplacementopt);
     }
+    //div.style.setProperty("display", "none");
     parent.insertBefore(div, prev);
+    gps[projectName].loading = () => {
+        gps[projectName].div.style.removeProperty("display");
+        gps[projectName].iframe.contentWindow.postMessage("resume GP");
+    };
     return div;
 }
 
@@ -105,13 +113,20 @@ function makeGP(after, projectName, width, height) {
     let iframe = window.document.createElement("iframe");
     iframe.id = projectName;
     iframe.classList.add("gp");
-    iframe.src = "https://gpblocks.org/run/load.html#" + src;
+    iframe.src = "https://gpblocks.org/run/go.html#" + src;
     iframe.setAttribute("allow", "autoplay; fullscreen");
     iframe.style.height = height;
     iframe.style.width = width;
 
     let div = document.createElement("div");
+    div.classList.add("middle");
+    div.style.height = height;
+    div.style.width = width;
+    
     div.appendChild(iframe);
+
+    gps[projectName] = {
+        iframe, div, running: true, loading: null};
 
     return div;
 }
@@ -137,7 +152,9 @@ function makeGPLauncher(after, projectName, width, height) {
     launcher.style.setProperty("background-size", "100%");
 
     let msg = document.createElement("div");
-    msg.innerHTML = `
+    msg.innerHTML = document.getElementById("launcherMessage").innerHTML;
+
+`
 Tap here to start the dynamic content.<BR>
 It may take up to a minute to launch.`;
 
