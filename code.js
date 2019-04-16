@@ -43,6 +43,9 @@ window.onmessage = (msg) => {
     let origin = msg.origin;
     let source = msg.source;
 
+    window.o = origin;
+    window.s = source;
+
     console.log('message received', data, origin, source, name);
     if (gps[name] && gps[name].loading) {
         gps[name].loading();
@@ -68,7 +71,14 @@ function addGP(after, projectName, width, height, optReplacementopt) {
     gps[projectName].loading = () => {
         gps[projectName].div.style.removeProperty("display");
         gps[projectName].iframe.contentWindow.postMessage("resume GP");
-        gps[projectName].iframe.contentWindow.postMessage("hideButton UploadButton");
+        gps[projectName].iframe.contentWindow.postMessage("hideButton KeyboardButton", "*");
+        gps[projectName].iframe.contentWindow.postMessage("hideButton BackspaceButton", "*");
+        gps[projectName].iframe.contentWindow.postMessage("hideButton UploadButton", "*");
+
+        gps[projectName].iframe.contentWindow.postMessage("showButton FullscreenButton", "*");
+        gps[projectName].iframe.contentWindow.postMessage("showButton SeeInsideButton", "*");
+        gps[projectName].iframe.contentWindow.postMessage("showButton GoButton", "*");
+        gps[projectName].iframe.contentWindow.postMessage("showButton StopButton", "*");
     };
     return div;
 }
