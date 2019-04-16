@@ -68,6 +68,7 @@ function addGP(after, projectName, width, height, optReplacementopt) {
     gps[projectName].loading = () => {
         gps[projectName].div.style.removeProperty("display");
         gps[projectName].iframe.contentWindow.postMessage("resume GP");
+        gps[projectName].iframe.contentWindow.postMessage("hideButton UploadButton");
     };
     return div;
 }
