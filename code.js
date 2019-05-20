@@ -25,12 +25,13 @@ window.onload = () => {
 
     if (detectMobile()) {
         addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp", w, h);
-        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", w, h);
     } else {
         addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", w, h);
-        addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", w, h);
-
     }
+
+    addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", w, h);
+    addGPLauncher("afterMemoryTinkering", "MemoryTinkering8.gpp", w, h);
+    addGPLauncher("afterConditiondReflex", "conditionedReflex12.gpp", w, h);
 
     stillLoading = true;
     startLoadingTime = Date.now();
