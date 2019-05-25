@@ -6,7 +6,6 @@ let stillLoading = null;
 let loaderDots = ['.', '..', '...', '....'];
 let loaderIndex = 0;
 
-
 function detectMobile() {
     return (navigator.userAgent.match(/Android/i)
         || navigator.userAgent.match(/webOS/i)

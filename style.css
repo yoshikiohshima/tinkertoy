@@ -1,6 +1,5 @@
 html { font-size: 15px; }
 
-
 body {
 //  font-family:Georgia,"Times New Roman","Hiragino Mincho","Meiryo",serif;
   background-color: hsl(0, 0%, 100%);
@@ -9,7 +8,6 @@ body {
 body {
   font-family: 'Source Serif Pro', serif;
 }
-
 
 div.article {
   margin-left: 10px;
