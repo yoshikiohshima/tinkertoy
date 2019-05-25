@@ -71,7 +71,7 @@ function addGP(after, projectName, width, height, optReplacementopt) {
     parent.insertBefore(div, prev);
     gps[projectName].loading = () => {
         gps[projectName].div.style.removeProperty("display");
-        gps[projectName].iframe.contentWindow.postMessage("resume GP");
+        gps[projectName].iframe.contentWindow.postMessage("resume GP", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton KeyboardButton", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton BackspaceButton", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton UploadButton", "*");
@@ -111,6 +111,7 @@ function makeGP(after, projectName, width, height) {
     iframe.classList.add("gp");
     iframe.src = "https://gpblocks.org/run/go.html#" + src;
     iframe.setAttribute("allow", "autoplay; fullscreen");
+    iframe.setAttribute("allowfullscreen", "true");
     iframe.style.height = height;
     iframe.style.width = width;
 
