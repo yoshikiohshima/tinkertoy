@@ -19,18 +19,15 @@ function detectMobile() {
 window.onload = () => {
     holder = document.getElementById("loaderholder");
 
-    let w = "720px";
-    let h = "540px"; // 405px
-
     if (detectMobile()) {
-        addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp", w, h);
+        addGPLauncher("afterWanderAndAvoid", "wanderAndAvoid.gpp");
     } else {
-        addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp", w, h);
+        addGP("afterWanderAndAvoid", "wanderAndAvoid.gpp");
     }
 
-    addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp", w, h);
-    addGPLauncher("afterMemoryTinkering", "MemoryTinkering8.gpp", w, h);
-    addGPLauncher("afterConditiondReflex", "conditionedReflex12.gpp", w, h);
+    addGPLauncher("afterNudibranchNeuronChain", "NudibranchNeuronChain.gpp");
+    addGPLauncher("afterMemoryTinkering", "MemoryTinkering8.gpp");
+    addGPLauncher("afterConditiondReflex", "conditionedReflex12.gpp");
 
     stillLoading = true;
     startLoadingTime = Date.now();
@@ -58,10 +55,10 @@ window.onmessage = (msg) => {
     }
 };
 
-function addGP(after, projectName, width, height, optReplacementopt) {
+function addGP(after, projectName, optReplacementopt) {
     let prev = window.document.getElementById(after);
     let parent = prev.parentNode;
-    let div = makeGP(after, projectName, width, height);
+    let div = makeGP(after, projectName);
 
     if (optReplacementopt) {
         parent.removeChild(optReplacementopt);
@@ -73,6 +70,7 @@ function addGP(after, projectName, width, height, optReplacementopt) {
         gps[projectName].iframe.contentWindow.postMessage("resume GP", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton KeyboardButton", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton BackspaceButton", "*");
+        gps[projectName].iframe.contentWindow.postMessage("hideButton EnableMicrophone", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton UploadButton", "*");
 
         gps[projectName].iframe.contentWindow.postMessage("showButton FullscreenButton", "*");
@@ -83,15 +81,15 @@ function addGP(after, projectName, width, height, optReplacementopt) {
     return div;
 }
 
-function addGPLauncher(after, projectName, width, height) {
+function addGPLauncher(after, projectName) {
     let prev = window.document.getElementById(after);
     let parent = prev.parentNode;
-    let div = makeGPLauncher(after, projectName, width, height);
+    let div = makeGPLauncher(after, projectName);
     parent.insertBefore(div, prev);
     return div;
 }
 
-function makeGP(after, projectName, width, height) {
+function makeGP(after, projectName) {
     let loc = window.location;
     let last = loc.pathname.lastIndexOf("/");
     let dir = loc.pathname.slice(0, last+1);
@@ -107,17 +105,14 @@ function makeGP(after, projectName, width, height) {
 
     let iframe = window.document.createElement("iframe");
     iframe.id = projectName;
-    iframe.classList.add("gp");
+    iframe.classList.add("gpExtent");
     iframe.src = "https://gpblocks.org/run/go.html#" + src;
     iframe.setAttribute("allow", "autoplay; fullscreen; microphone; camera");
     iframe.setAttribute("allowfullscreen", "true");
-    iframe.style.height = height;
-    iframe.style.width = width;
 
     let div = document.createElement("div");
     div.classList.add("middle");
-    div.style.height = height;
-    div.style.width = width;
+    div.classList.add("gpExtent");
 
     div.appendChild(iframe);
 
@@ -127,11 +122,10 @@ function makeGP(after, projectName, width, height) {
     return div;
 }
 
-function makeGPLauncher(after, projectName, width, height) {
+function makeGPLauncher(after, projectName) {
     let launcher = document.createElement("div");
 
-    launcher.style.width = width;
-    launcher.style.height = height;
+    launcher.classList.add("gpExtent");
     launcher.classList.add("launcher");
 
     launcher.style.setProperty("background-image", `url(${projectName + "-background.png"})`);
@@ -147,7 +141,7 @@ function makeGPLauncher(after, projectName, width, height) {
     launcher.appendChild(msg);
 
     launcher.onclick =() => {
-        let div = addGP(after, projectName, width, height, launcher);
+        let div = addGP(after, projectName, launcher);
         div.style.removeProperty("display"); // take this line out
         console.log("click", projectName);
     };
@@ -159,7 +153,6 @@ function loaderAnimation() {
     let now = Date.now();
     if (stillLoading && now < startLoadingTime + 3000) {
         if (holder) {
-            let label = holder.querySelector('#loaderLabel');
             let labelDots = holder.querySelector('#loaderDots');
 
             loaderIndex = (loaderIndex + 1) % loaderDots.length;

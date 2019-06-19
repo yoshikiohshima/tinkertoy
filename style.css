@@ -99,8 +99,18 @@ img.middle {
   width: auto;
 }
 
+.editornote {
+  font-style: italic;
+  width: 70%;
+  margin-left: auto;
+  margin-right: 40px;
+
+  border: solid gray 1px;
+  padding: 0.5em;
+}
+
 #loaderholder {
-  height: 60px;
+  height: 50px;
   text-align: right;
 }
 
@@ -109,9 +119,9 @@ img.middle {
   text-align: right;
 }
 
-.gp {
-  width: 720px;
-  height: 5400px;
+.gpExtent {
+  width: 760px;
+  height: 506px;
 }
 
 .gp.loading {
@@ -138,7 +148,7 @@ div.launcher {
 
 .launcherButton {
   transform: scale(0.2, 0.2);
-  transform-origin: left top;
+  tranrsform-origin: left top;
   margin-left: 30px;
   margin-top: 30px;
 }
