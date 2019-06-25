@@ -70,7 +70,7 @@ function addGP(after, projectName, optReplacementopt) {
         gps[projectName].iframe.contentWindow.postMessage("resume GP", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton KeyboardButton", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton BackspaceButton", "*");
-        gps[projectName].iframe.contentWindow.postMessage("hideButton EnableMicrophone", "*");
+        gps[projectName].iframe.contentWindow.postMessage("hideButton EnableMicrophoneButton", "*");
         gps[projectName].iframe.contentWindow.postMessage("hideButton UploadButton", "*");
 
         gps[projectName].iframe.contentWindow.postMessage("showButton FullscreenButton", "*");
