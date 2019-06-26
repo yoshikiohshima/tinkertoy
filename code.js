@@ -43,7 +43,6 @@ window.onmessage = (msg) => {
     window.o = origin;
     window.s = source;
 
-    console.log('message received', data, origin, source, name);
     if (gps[name] && gps[name].loading) {
         gps[name].loading();
         gps[name].loading = null;
@@ -109,6 +108,7 @@ function makeGP(after, projectName) {
     iframe.src = "https://gpblocks.org/run/go.html#" + src;
     iframe.setAttribute("allow", "autoplay; fullscreen; microphone; camera");
     iframe.setAttribute("allowfullscreen", "true");
+    iframe.setAttribute("overflow", "hidden");
 
     let div = document.createElement("div");
     div.classList.add("middle");
@@ -143,7 +143,6 @@ function makeGPLauncher(after, projectName) {
     launcher.onclick =() => {
         let div = addGP(after, projectName, launcher);
         div.style.removeProperty("display"); // take this line out
-        console.log("click", projectName);
     };
 
     return launcher;
