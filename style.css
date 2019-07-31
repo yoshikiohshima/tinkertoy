@@ -166,8 +166,7 @@ div.launcher {
   display: inline-block;
 }
 
-@mediaflush
- (max-width: 760px) {
+@media (max-width: 760px) {
    section>ul { width: 95%; }
    section>ol { width: 95%; }
 }
