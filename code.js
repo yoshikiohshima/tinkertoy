@@ -104,7 +104,7 @@ function makeGP(after, projectName) {
 
     let iframe = window.document.createElement("iframe");
     iframe.id = projectName;
-    iframe.classList.add("gpExtent");
+    iframe.classList.add("gpIframe");
     iframe.src = "https://gpblocks.org/run/go.html#" + src;
     iframe.setAttribute("allow", "autoplay; fullscreen; microphone; camera");
     iframe.setAttribute("allowfullscreen", "true");

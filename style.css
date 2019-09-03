@@ -120,8 +120,15 @@ img.middle {
 }
 
 .gpExtent {
-  width: 760px;
-  height: 508px;
+  width: 776px;
+  height: 516px;
+  border-width: 2px;
+}
+
+.gpIframe {
+  width: 772px;
+  height: 512px;
+  border-width: 0px;
 }
 
 .gp.loading {
