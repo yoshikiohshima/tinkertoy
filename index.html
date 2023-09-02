@@ -7,9 +7,34 @@
     <link rel="stylesheet" href="en.css"/>
     <link rel="shortcut icon" type="image/png" href="favicon.png"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.jsdelivr.net/npm/@croquet/croquet"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrious"></script>
     <script type='text/javascript' src="code.js"></script>
   </head>
   <body>
+    <script type="text/javascript">
+      if (window.location.search !== "") {
+	  let s1 = document.createElement("script");
+	  document.head.appendChild(s1);
+	  new Promise((resolve) => {
+	      s1.src = "https://cdn.jsdelivr.net/npm/page-synchronizer@1.0.7";
+	      s1.onload = resolve;
+	  }).then(() => {
+	      let q = new QRious({
+		  element: document.getElementById("qr"),
+		  value: window.location.href
+	      });
+	      SimplePageView.start({
+		  apiKey: "1D3DG2FNx88e7o30F3PGgLyLjn3Bh0oI1JKx7o9oM",
+		  eventRateLimit: 60
+	      });
+	  });
+      } else {
+	  let style = document.createElement("style");
+	  style.innerHTML = "html {scroll-behavior: smooth;";
+	  document.body.appendChild(style);
+      }
+    </script>
     <div class="article">
       <table style="text-align: center; margin-bottom: 50px">
 	<tr>
@@ -29,6 +54,8 @@
           <td><i>"Programs... make things come to be, where nothing ever was before"</i></td>
         <tr>
       </table>
+
+      <div id="qrHolder"><canvas id="qr" width=160 height=160></canvas></div>
 
 <div id="loaderholder">
 <table>

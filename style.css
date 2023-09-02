@@ -1,7 +1,9 @@
-html { font-size: 15px; }
+html {
+    font-size: 15px;
+    width: 100%;
+}
 
 body {
-//  font-family:Georgia,"Times New Roman","Hiragino Mincho","Meiryo",serif;
   background-color: hsl(0, 0%, 100%);
 }
 
@@ -171,6 +173,11 @@ div.launcher {
   margin-bottom: auto;
   background: black;
   display: inline-block;
+}
+
+#qr {
+    width: 160px;
+    height: 160px;
 }
 
 @media (max-width: 760px) {
